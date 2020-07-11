@@ -1,0 +1,56 @@
+<html>
+    <head>
+        <script src="http://localhost:5000/event-bus.js"></script>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+        <script>
+            
+             function handleBlur(el){
+                document.getElementById('is-typing').style.visibility = 'hidden';
+            }
+
+            /**
+             * Fired after input message blured
+             **/
+            function handleKeyup(el){
+                document.getElementById('is-typing').style.visibility = 'visible';
+                if (event.keyCode === 13) {
+                    window.Messenger.dispatchEvent('chat-message', { text: el.value });
+                    document.getElementById('message-text').value = '';
+                    document.getElementById('is-typing').style.visibility = 'hidden';
+                }
+            }
+
+            window.Messenger.addEventListener('chat-message', event => {   
+                document.getElementById('list-messages').innerHTML = document.getElementById('list-messages').innerHTML + `<li>${event.detail.text}</li>`
+            });
+
+        </script>
+        <style>
+            #app-chat {
+                margin-top: 50px;
+            }
+        </style>
+    </head>
+    <body>
+        
+        <div id="app-chat">
+            <div class="container">
+                <div class="row">
+                    <div class="col-6">
+                       <div class="form-group">
+                            <label for="">Message</label>
+                            <input id="message-text" type="text" class="form-control" onkeyup="handleKeyup(this)" onblur="handleBlur()" />
+                            <small>Press `ENTER` to send message</small>
+                       </div>
+                    </div>
+                    
+                    <div class="col-6">
+                        <label style="visibility: hidden;" id="is-typing">Client is typing...</label>
+                        <ul id="list-messages"></ul>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

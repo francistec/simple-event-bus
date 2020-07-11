@@ -1,0 +1,18 @@
+{
+  "name": "simple-event-bus",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:francistec/simple-event-bus.git",
+  "author": "francistec <me@francistec.io>",
+  "license": "MIT",
+  "dependencies": {
+    "webpack": "^4.43.0"
+  },
+  "scripts": {
+    "build:dev": "webpack --config-name development",
+    "build:prod": "webpack --config-name production"
+  },
+  "devDependencies": {
+    "webpack-cli": "^3.3.12"
+  }
+}
