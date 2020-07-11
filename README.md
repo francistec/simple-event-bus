@@ -31,4 +31,4 @@ and then
 
 
 
-######Original code: https://pineco.de/creating-a-javascript-event-bus/
+###### Original code: https://pineco.de/creating-a-javascript-event-bus/
