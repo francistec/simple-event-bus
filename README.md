@@ -6,7 +6,7 @@ Well the answer is, **`Simple Event Bus`** :wink:
 
 With **`Simple Event Bus`** you can pass data beetween components developed in React, VueJS or a simpre HTML Element.
 
-##Usage
+## Usage
 
 Just add the script
 
